@@ -2,12 +2,23 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MUSIC BOX</title>
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-html,body{
+html{
   margin:0;
   padding:0;
-  background:transparent;
+  background:transparent !important;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background:transparent !important;
+  background-color:transparent !important;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  color:#171717;
 }
 
 .card{
@@ -31,10 +42,10 @@ html,body{
 <div class="times"><span id="current">0:00</span><span id="duration">0:00</span></div>
 <input id="seek" type="range" min="0" max="100" value="0">
 <div class="controls"><button id="prev" class="small">⏮</button><button id="play" class="main">▶</button><button id="next" class="small">⏭</button></div>
-<div class="bottom"><button id="shuffle" class="toggle">🔀 3</button><button id="loop" class="toggle">🔁 リピート</button></div>
+<div class="bottom"><button id="shuffle" class="toggle">🔀 5</button><button id="loop" class="toggle">🔁 リピート</button></div>
 <div class="note">MUSIC BOX</div></div><div id="player"></div>
 <script>
-const PLAYLIST_ID="YOUR_PLAYLIST_ID";let player;
+const PLAYLIST_ID="PLK3dVrptUPDo";let player;
 function ytTime(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
 function updateUI(){if(!player||!player.getDuration)return;let d=player.getDuration()||0,c=player.getCurrentTime()||0;seek.value=d?c/d*100:0;current.textContent=ytTime(c);duration.textContent=ytTime(d)}
 function loadInfo(){let d=player.getVideoData?player.getVideoData():{};title.textContent=d.title||"MUSIC BOX";artist.textContent=d.author||"YouTube";if(d.video_id)art.src="https://i.ytimg.com/vi/"+d.video_id+"/hqdefault.jpg"}
