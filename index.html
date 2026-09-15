@@ -2,33 +2,8 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MUSIC BOX</title>
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}body{margin:0;background:#f7f7f7;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:#171717}
 
-html{
-  margin:0;
-  padding:0;
-  background:transparent !important;
-}
-
-body{
-  margin:0;
-  padding:0;
-  background:transparent !important;
-  background-color:transparent !important;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-  color:#171717;
-}
-
-.card{
-  width:min(100%,420px);
-  margin:0 auto;
-  padding:2px;
-  background:#fff;
-  border-radius:24px;
-  box-shadow:0 8px 30px rgba(0,0,0,.08);
-}
 .art{width:100%;aspect-ratio:1;border-radius:18px;object-fit:cover;background:#eee;display:block}
 .info{text-align:center;padding:16px 6px 8px}.title{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.artist{font-size:13px;color:#777;margin-top:5px}
 .times{display:flex;justify-content:space-between;font-size:10px;color:#888;margin:12px 2px 4px}input[type=range]{width:100%;accent-color:#111}
@@ -42,10 +17,10 @@ body{
 <div class="times"><span id="current">0:00</span><span id="duration">0:00</span></div>
 <input id="seek" type="range" min="0" max="100" value="0">
 <div class="controls"><button id="prev" class="small">⏮</button><button id="play" class="main">▶</button><button id="next" class="small">⏭</button></div>
-<div class="bottom"><button id="shuffle" class="toggle">🔀 5</button><button id="loop" class="toggle">🔁 リピート</button></div>
+<div class="bottom"><button id="shuffle" class="toggle">🔀 6</button><button id="loop" class="toggle">🔁 リピート</button></div>
 <div class="note">MUSIC BOX</div></div><div id="player"></div>
 <script>
-const PLAYLIST_ID="PLK3dVrptUPDo";let player;
+const PLAYLIST_ID="YOUR_PLAYLIST_ID";let player;
 function ytTime(s){s=Math.max(0,Math.floor(s||0));return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
 function updateUI(){if(!player||!player.getDuration)return;let d=player.getDuration()||0,c=player.getCurrentTime()||0;seek.value=d?c/d*100:0;current.textContent=ytTime(c);duration.textContent=ytTime(d)}
 function loadInfo(){let d=player.getVideoData?player.getVideoData():{};title.textContent=d.title||"MUSIC BOX";artist.textContent=d.author||"YouTube";if(d.video_id)art.src="https://i.ytimg.com/vi/"+d.video_id+"/hqdefault.jpg"}
